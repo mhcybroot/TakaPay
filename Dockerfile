@@ -2,6 +2,7 @@
 FROM gradle:8.5-jdk21-alpine AS build
 WORKDIR /home/gradle/src
 COPY --chown=gradle:gradle . .
+RUN chmod +x ./gradlew
 # Skip tests to speed up the build, remove -x test if you want them to run
 RUN ./gradlew bootJar --no-daemon -x test
 
